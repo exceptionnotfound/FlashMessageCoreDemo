@@ -29,7 +29,7 @@ namespace FlashMessageCoreDemo.Controllers
         {
             TempData[Constants.FlashMessageKey] = message;
 
-            string commonCSS = "rounded p-lg-3 "; //Note the trailing space
+            string commonCSS = "";
 
             switch (type)
             {

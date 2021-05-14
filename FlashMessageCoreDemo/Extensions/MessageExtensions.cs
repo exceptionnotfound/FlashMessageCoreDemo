@@ -11,16 +11,24 @@ namespace FlashMessageCoreDemo.Extensions
     public static class MessageExtensions
     {
         public static IHtmlContent ErrorMessage<TModel>(this IHtmlHelper<TModel> helper, string message)
-            => StatusMessage(message, "rounded p-lg-3 alert-danger");
+        {
+            return StatusMessage(message, "alert-danger");
+        }
 
         public static IHtmlContent SuccessMessage<TModel>(this IHtmlHelper<TModel> helper, string message)
-            => StatusMessage(message, "rounded p-lg-3 alert-success");
+        {
+            return StatusMessage(message, "alert-success");
+        }
 
         public static IHtmlContent WarningMessage<TModel>(this IHtmlHelper<TModel> helper, string message)
-            => StatusMessage(message, "rounded p-lg-3 alert-warning");
+        {
+            return StatusMessage(message, "alert-warning");
+        }
 
         public static IHtmlContent InfoMessage<TModel>(this IHtmlHelper<TModel> helper, string message)
-            => StatusMessage(message, "rounded p-lg-3 alert-info");
+        {
+            return StatusMessage(message, "alert-info");
+        }
 
         public static IHtmlContent FlashMessage(this ITempDataDictionary tempData)
         {
@@ -34,6 +42,7 @@ namespace FlashMessageCoreDemo.Extensions
         private static IHtmlContent StatusMessage(string message, string cssClass)
         {
             TagBuilder display = new TagBuilder("div");
+            display.AddCssClass("rounded p-lg-3");
             display.AddCssClass(cssClass);
             display.InnerHtml.Append(message);
 
