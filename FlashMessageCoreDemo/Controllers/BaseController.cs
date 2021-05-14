@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace FlashMessageCoreDemo.Controllers
 {
-    public class BaseController : Controller
-    {
+public class BaseController : Controller
+{
         public void SetSuccessMessage(string message)
         {
             SetFlashMessage(message, FlashMessageType.Success);
@@ -29,28 +29,28 @@ namespace FlashMessageCoreDemo.Controllers
         {
             TempData[Constants.FlashMessageKey] = message;
 
-            string commonCSS = "";
+            string messageCSS = "";
 
             switch (type)
             {
                 case FlashMessageType.Success:
-                    commonCSS += "alert-success";
+                    messageCSS += "alert-success";
                     break;
 
                 case FlashMessageType.Warning:
-                    commonCSS += "alert-warning";
+                    messageCSS += "alert-warning";
                     break;
 
                 case FlashMessageType.Error:
-                    commonCSS += "alert-danger";
+                    messageCSS += "alert-danger";
                     break;
 
                 case FlashMessageType.Info:
-                    commonCSS += "alert-info";
+                    messageCSS += "alert-info";
                     break;
             }
 
-            TempData[Constants.FlashMessageTypeKey] = commonCSS;
+            TempData[Constants.FlashMessageTypeKey] = messageCSS;
         }
     }
 }
