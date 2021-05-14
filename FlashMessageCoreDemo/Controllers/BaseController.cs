@@ -29,24 +29,28 @@ namespace FlashMessageCoreDemo.Controllers
         {
             TempData[Constants.FlashMessageKey] = message;
 
+            string commonCSS = "rounded p-lg-3 "; //Note the trailing space
+
             switch (type)
             {
                 case FlashMessageType.Success:
-                    TempData[Constants.FlashMessageTypeKey] = "alert-success";
+                    commonCSS += "alert-success";
                     break;
 
                 case FlashMessageType.Warning:
-                    TempData[Constants.FlashMessageTypeKey] = "alert-warning";
+                    commonCSS += "alert-warning";
                     break;
 
                 case FlashMessageType.Error:
-                    TempData[Constants.FlashMessageTypeKey] = "alert-danger";
+                    commonCSS += "alert-danger";
                     break;
 
                 case FlashMessageType.Info:
-                    TempData[Constants.FlashMessageTypeKey] = "alert-info";
+                    commonCSS += "alert-info";
                     break;
             }
+
+            TempData[Constants.FlashMessageTypeKey] = commonCSS;
         }
     }
 }

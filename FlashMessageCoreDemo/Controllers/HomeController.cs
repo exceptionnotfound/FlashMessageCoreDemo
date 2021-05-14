@@ -12,17 +12,30 @@ namespace FlashMessageCoreDemo.Controllers
 {
     public class HomeController : BaseController
     {
-        public IActionResult Index()
+        public IActionResult FlashMessage()
         {
-            HomeIndexVM model = new HomeIndexVM();
+            MessageVM model = new MessageVM();
             return View(model);
         }
 
-        [HttpPost("AddMessage")]
-        public IActionResult AddMessage(string message, FlashMessageType type)
+        [HttpPost("AddFlashMessage")]
+        public IActionResult AddFlashMessage(string message, FlashMessageType type)
         {
             SetFlashMessage(message, type);
-            return RedirectToAction("Index");
+            return RedirectToAction("FlashMessage");
+        }
+
+        public IActionResult StatusMessage(string message)
+        {
+            MessageVM model = new MessageVM();
+            model.Message = message;
+            return View(model);
+        }
+
+        [HttpPost("AddStatusMessage")]
+        public IActionResult AddStatusMessage(string message)
+        {
+            return RedirectToAction("StatusMessage", new { message = message });
         }
     }
 }

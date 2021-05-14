@@ -1,0 +1,27 @@
+﻿@model FlashMessageCoreDemo.ViewModels.MessageVM
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Flash Message Demo</h1>
+    @using (Html.BeginForm("AddFlashMessage", "Home", FormMethod.Post))
+    {
+        <div class="form-group">
+            <div class="row input-group">
+                <div class="col-lg-6">
+                    <label asp-for="Message"></label>
+                    <input type="text" class="form-control" asp-for="Message" />
+                </div>
+                <div class="col-lg-6">
+                    <label asp-for="Type"></label>
+                    <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<FlashMessageType>()">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary">Show Message</button>
+    }
+    @TempData.FlashMessage()
+</div>

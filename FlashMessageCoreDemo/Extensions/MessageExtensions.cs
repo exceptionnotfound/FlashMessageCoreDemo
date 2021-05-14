@@ -8,8 +8,20 @@ using System.Threading.Tasks;
 
 namespace FlashMessageCoreDemo.Extensions
 {
-    public static class FlashMessageExtensions
+    public static class MessageExtensions
     {
+        public static IHtmlContent ErrorMessage<TModel>(this IHtmlHelper<TModel> helper, string message)
+            => StatusMessage(message, "rounded p-lg-3 alert-danger");
+
+        public static IHtmlContent SuccessMessage<TModel>(this IHtmlHelper<TModel> helper, string message)
+            => StatusMessage(message, "rounded p-lg-3 alert-success");
+
+        public static IHtmlContent WarningMessage<TModel>(this IHtmlHelper<TModel> helper, string message)
+            => StatusMessage(message, "rounded p-lg-3 alert-warning");
+
+        public static IHtmlContent InfoMessage<TModel>(this IHtmlHelper<TModel> helper, string message)
+            => StatusMessage(message, "rounded p-lg-3 alert-info");
+
         public static IHtmlContent FlashMessage(this ITempDataDictionary tempData)
         {
             if (tempData[Constants.FlashMessageKey] != null)
@@ -22,7 +34,6 @@ namespace FlashMessageCoreDemo.Extensions
         private static IHtmlContent StatusMessage(string message, string cssClass)
         {
             TagBuilder display = new TagBuilder("div");
-            display.AddCssClass("rounded");
             display.AddCssClass(cssClass);
             display.InnerHtml.Append(message);
 

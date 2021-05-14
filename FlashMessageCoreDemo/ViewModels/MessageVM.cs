@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace FlashMessageCoreDemo.ViewModels
 {
-    public class HomeIndexVM
+    public class MessageVM
     {
-        [DisplayName("Flash Message: ")]
+        [DisplayName("Message: ")]
         public string Message { get; set; }
 
         [DisplayName("Type: ")]
